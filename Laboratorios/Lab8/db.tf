@@ -10,7 +10,7 @@ resource "aws_db_instance" "db-practico-3tier" {
   parameter_group_name = "default.mysql5.7"
   db_subnet_group_name = aws_db_subnet_group.db-subnet-practico-3tier.id
   skip_final_snapshot  = true
-  depends_on = [ aws_instance.webapp-server01, aws_instance.webapp-server02 ]
+  #depends_on = [ aws_instance.webapp-server01, aws_instance.webapp-server02 ]
 }
 resource "aws_db_subnet_group" "db-subnet-practico-3tier" {
   name       = "db-subnet-group"
