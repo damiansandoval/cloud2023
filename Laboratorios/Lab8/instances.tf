@@ -7,7 +7,7 @@ resource "aws_instance" "webapp-server01" {
   tags = {
     Name = "webapp-server01"
   }
-  depends_on = [ aws_db_instance.db-practico-3tier ]
+  depends_on = [aws_db_instance.db-practico-3tier]
 }
 
 resource "aws_instance" "webapp-server02" {
@@ -19,5 +19,5 @@ resource "aws_instance" "webapp-server02" {
   tags = {
     Name = "webapp-server02"
   }
-  depends_on = [ aws_db_instance.db-practico-3tier ]
+  depends_on = [aws_db_instance.db-practico-3tier]
 }
