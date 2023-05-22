@@ -20,6 +20,6 @@ resource "aws_db_subnet_group" "db-subnet-practico-3tier" {
 
 output "db_srv_name" {
   description = "hostname de la db"
-  value       = aws_db_instance.db-practico-3tier.address
+  value       = aws_db_instance.db-practico-3tier.endpoint
 }
 
