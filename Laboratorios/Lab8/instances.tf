@@ -15,8 +15,8 @@ resource "aws_instance" "webapp-server01" {
       "sudo apt install -y software-properties-common",
       "sudo add-apt-repository -y ppa:ondrej/php",
       "sudo apt update",
-      "sudo apt install -y git php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-mysql php5.6-curl php5.6-gd php5.6-xml php5.6-zip",
-    "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp"]
+      "sudo mkdir /tmp/repo-mauri/",
+      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri"]
   }
   tags = {
     Name = "webapp-server01"
@@ -42,7 +42,8 @@ resource "aws_instance" "webapp-server02" {
       "sudo add-apt-repository -y ppa:ondrej/php",
       "sudo apt update",
       "sudo apt install -y git php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-mysql php5.6-curl php5.6-gd php5.6-xml php5.6-zip",
-    "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp"]
+      "sudo mkdir /tmp/repo-mauri/",
+      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri"]
   }
   tags = {
     Name = "webapp-server02"
