@@ -1,5 +1,5 @@
 # creamos la base de datos
-resource "aws_db_instance" "db-practico-3tier" {  
+resource "aws_db_instance" "db-practico-3tier" {
   allocated_storage      = 10
   db_name                = "mydb"
   engine                 = "mysql"
@@ -11,6 +11,10 @@ resource "aws_db_instance" "db-practico-3tier" {
   db_subnet_group_name   = aws_db_subnet_group.db-subnet-practico-3tier.id
   vpc_security_group_ids = [aws_security_group.mysql_sg.id]
   skip_final_snapshot    = true
+}
+
+output "db_ip_address" {
+  value = aws_db_instance.db-practico-3tier.address
 }
 
 resource "aws_db_subnet_group" "db-subnet-practico-3tier" {
