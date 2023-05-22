@@ -1,5 +1,5 @@
 # creamos la base de datos
-resource "aws_db_instance" "db-practico-3tier" {
+resource "aws_db_instance" "db-practico-3tier" {  
   allocated_storage      = 10
   db_name                = "mydb"
   engine                 = "mysql"
@@ -13,7 +13,7 @@ resource "aws_db_instance" "db-practico-3tier" {
   skip_final_snapshot    = true
 }
 
-output "db_ip_address" {
+output "db_srv_name" {
   value = aws_db_instance.db-practico-3tier.address
 }
 
