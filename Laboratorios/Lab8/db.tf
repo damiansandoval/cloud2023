@@ -1,5 +1,5 @@
 # creamos la base de datos
-resource "aws_db_instance" "db-practico-3tier" {  
+resource "aws_db_instance" "db-practico-3tier" {
   allocated_storage      = 10
   db_name                = "mydb"
   engine                 = "mysql"
@@ -13,12 +13,13 @@ resource "aws_db_instance" "db-practico-3tier" {
   skip_final_snapshot    = true
 }
 
-output "db_srv_name" {
-  value = aws_db_instance.db-practico-3tier.address
-}
-
 resource "aws_db_subnet_group" "db-subnet-practico-3tier" {
   name       = "db-subnet-group"
   subnet_ids = [aws_subnet.subnet1-practico-3tier.id, aws_subnet.subnet2-practico-3tier.id]
+}
+
+output "db_srv_name" {
+  description = "hostname de la db"
+  value       = aws_db_instance.db-practico-3tier.address
 }
 

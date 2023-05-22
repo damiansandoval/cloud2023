@@ -22,7 +22,7 @@ resource "aws_instance" "webapp-server01" {
       "sudo rm -rf /tmp/repo-mauri",
       "sudo sed -i \"s/define('DB_USER', 'root');/define('DB_USER', 'dbuser123');/\" /var/www/html/config.php",
       "sudo sed -i \"s/define('DB_PASSWORD', 'root');/define('DB_PASSWORD', 'dbpass123');/\" /var/www/html/config.php",
-      "sudo sed -i \"s/define('DB_HOST', 'localhost');/define('DB_HOST', '$db_srv_name');/\" /var/www/html/config.php",
+      "sudo sed -i \"s/define('DB_HOST', 'localhost');/define('DB_HOST', '${db_srv_name.value}');/\" /var/www/html/config.php",
     "sudo systemctl restart apache2"]
   }
   tags = {
