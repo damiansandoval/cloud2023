@@ -8,15 +8,22 @@ resource "aws_instance" "webapp-server01" {
     type        = "ssh"
     user        = "ubuntu"
     host        = self.public_ip
-    private_key = file("/home/damian/Descargas/vockey.pem")
+    private_key = file("~/Descargas/vockey.pem")
   }
   provisioner "remote-exec" {
     inline = ["sudo apt update",
       "sudo apt install -y software-properties-common",
       "sudo add-apt-repository -y ppa:ondrej/php",
       "sudo apt update",
+      "sudo apt install -y git php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-mysql php5.6-curl php5.6-gd php5.6-xml php5.6-zip",
       "sudo mkdir /tmp/repo-mauri/",
-      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri"]
+      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri/",
+      "sudo mv /tmp/repo-mauri/* /var/www/html/",
+      "sudo rm -rf /tmp/repo-mauri",
+      "sudo sed -i \"s/define('DB_USER', 'root');/define('DB_USER', 'dbuser123');/\" /var/www/html/config.php",
+      "sudo sed -i \"s/define('DB_PASSWORD', 'root');/define('DB_PASSWORD', 'dbpass123');/\" /var/www/html/config.php",
+      "sudo sed -i \"s/define('DB_HOST', 'localhost');define('DB_HOST', '${var.db_private_ip}');/\" /var/www/html/config.php",
+    "sudo systemctl restart apache2"]
   }
   tags = {
     Name = "webapp-server01"
@@ -43,7 +50,11 @@ resource "aws_instance" "webapp-server02" {
       "sudo apt update",
       "sudo apt install -y git php5.6 php5.6-cli php5.6-common php5.6-mbstring php5.6-mysql php5.6-curl php5.6-gd php5.6-xml php5.6-zip",
       "sudo mkdir /tmp/repo-mauri/",
-      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri"]
+      "sudo git clone https://github.com/mauricioamendola/simple-ecomme.git /tmp/repo-mauri/",
+      "sudo mv /tmp/repo-mauri/* /var/www/html/",
+      "sudo sed -i \"s/define('DB_USER', 'root');/define('DB_USER', 'dbuser123');/\" /var/www/html/config.php",
+      "sudo sed -i \"s/define('DB_PASSWORD', 'root');/define('DB_PASSWORD', 'dbpass123');/\" /var/www/html/config.php",
+    "sudo systemctl restart apache2"]
   }
   tags = {
     Name = "webapp-server02"

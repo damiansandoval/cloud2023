@@ -21,3 +21,21 @@ Instalamos Ubuntu 20.04 porque las otras amis se rompen!
 
 Referencias:
 https://launchpad.net/~ondrej/+archive/ubuntu/php
+
+
+# Hola soy un encabezado
+
+* Aca hago un punteo y eso
+* otra cosa
+
+
+
+1) mas cosas
+2) otras
+
+
+
+**aca pongo algo en negrita**
+
+*aca en cursiva*
+
